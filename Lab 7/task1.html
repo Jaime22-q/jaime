@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            function findNDigitNumsUtil(n, sum, out, index)
+            {
+                if (index > n || sum < 0)
+                    return;
+                if (index == n)
+                {
+                    if(sum == 0)
+                    {
+                        out[index] = '\0';
+                        for(let i = 0; i < out.length; i++)
+                         
+                            document.write(out[i]);
+                        document.write(" ");
+                    }
+                    return;
+                }
+                for (let i = 0; i <= 9; i++)
+                {
+                    out[index] = String.fromCharCode(i + '0'.charCodeAt(0));
+            
+                    findNDigitNumsUtil(n, sum - i, out, index + 1);
+                }
+            }
+            function findNDigitNums(n,sum)
+            {
+                let out = new Array(n+1);
+                for(let i=0;i<n+1;i++)
+                {
+                    out[i]=false;
+                }
+               
+                for (let i = 1; i <= 9; i++)
+                {
+                    out[0] = String.fromCharCode(i + '0'.charCodeAt(0));
+                    findNDigitNumsUtil(n, sum - i, out, 1);
+                }
+            }
+            const nTerms = prompt ('enter the number');
+            let  n = 2, sum = 3;
+            findNDigitNums(n, sum);
+             
+        </script>
+    </body>
+</html>
